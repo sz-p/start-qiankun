@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "scripts": {
+        "installAll": "npm-run-all --parallel install:*",
+        "startAll": "npm-run-all --parallel start:*",
+        "install:main": "cd main && yarn install",
+        "install:pureHTMLWithEntry": "cd pureHTMLWithEntry && yarn install",
+        "install:createReactApp": "cd cra && yarn install",
+        "start:main": "cd main && yarn start",
+        "start:pureHTMLWithEntry": "cd pureHTMLWithEntry && yarn start",
+        "start:createReactApp": "cd cra && yarn start"
+    },
+    "author": "sz_p",
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}

@@ -14,7 +14,7 @@ import render from './render/ReactRender';
 /**
  * Step1 初始化应用（可选）
  */
-render({ loading: true });
+render({ loading: false });
 
 const loader = (loading) => render({ loading });
 
@@ -25,11 +25,25 @@ const loader = (loading) => render({ loading });
 registerMicroApps(
 	[
 		{
+			name: 'thirdPage',
+			entry: 'https://sz-p.com/boardItem/canvas-img-roll/build/index.html',
+			container: '#subapp-viewport',
+			loader,
+			activeRule: '/thirdPage'
+		},
+		{
 			name: 'react16',
 			entry: 'https://stackblitz.com/edit/children-propschildren-hoc?embed=1&file=index.js',
 			container: '#subapp-viewport',
 			loader,
 			activeRule: '/react16'
+		},
+		{
+			name: 'purehtml',
+			entry: '//localhost:5500',
+			container: '#subapp-viewport',
+			loader,
+			activeRule: '/purehtml'
 		}
 	],
 	{
