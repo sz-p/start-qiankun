@@ -32,18 +32,25 @@ registerMicroApps(
 			activeRule: '/thirdPage'
 		},
 		{
-			name: 'react16',
-			entry: 'https://stackblitz.com/edit/children-propschildren-hoc?embed=1&file=index.js',
+			name: 'cra',
+			entry: '//localhost:3000',
 			container: '#subapp-viewport',
 			loader,
-			activeRule: '/react16'
+			activeRule: '/create-react-app'
 		},
 		{
-			name: 'purehtml',
-			entry: '//localhost:5500',
+			name: 'pureHTMLWithEntry',
+			entry: '//localhost:3001',
 			container: '#subapp-viewport',
 			loader,
-			activeRule: '/purehtml'
+			activeRule: '/pureHTMLWithEntry'
+		},
+		{
+			name: 'pureHTMLWithOutEntry',
+			entry: '//localhost:3002',
+			container: '#subapp-viewport',
+			loader,
+			activeRule: '/pureHTMLWithOutEntry'
 		}
 	],
 	{
@@ -81,7 +88,7 @@ setGlobalState({
 /**
  * Step3 设置默认进入的子应用
  */
-setDefaultMountApp('/react16');
+setDefaultMountApp('/pureHTMLWithEntry');
 
 /**
  * Step4 启动应用

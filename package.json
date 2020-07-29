@@ -6,8 +6,10 @@
         "install:main": "cd main && yarn install",
         "install:pureHTMLWithEntry": "cd pureHTMLWithEntry && yarn install",
         "install:createReactApp": "cd cra && yarn install",
+        "install:pureHTMLWithOutEntry": "cd pureHTMLWithOutEntry && yarn install",
         "start:main": "cd main && yarn start",
         "start:pureHTMLWithEntry": "cd pureHTMLWithEntry && yarn start",
+        "start:pureHTMLWithOutEntry": "cd pureHTMLWithOutEntry && yarn start",
         "start:createReactApp": "cd cra && yarn start"
     },
     "author": "sz_p",
