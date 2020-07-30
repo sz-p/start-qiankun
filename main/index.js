@@ -33,10 +33,10 @@ registerMicroApps(
 		},
 		{
 			name: 'cra',
-			entry: '//localhost:3000',
+			entry: './create-react-app/index.html',
 			container: '#subapp-viewport',
 			loader,
-			activeRule: '/create-react-app'
+			activeRule: '/cra'
 		},
 		{
 			name: 'pureHTMLWithEntry',
@@ -88,7 +88,6 @@ setGlobalState({
 /**
  * Step3 设置默认进入的子应用
  */
-setDefaultMountApp('/pureHTMLWithEntry');
 
 /**
  * Step4 启动应用
