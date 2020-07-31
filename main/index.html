@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>QianKun Example</title>
+  <script src="./subConfig.js"></script>
 </head>
 
 <body>
@@ -14,12 +15,7 @@
     </header>
     <div class="mainapp-main">
       <!-- 侧边栏 -->
-      <ul class="mainapp-sidemenu">
-        <li onclick="push('/thirdPage')">第三方页面</li>
-        <li onclick="push('./CRA')">create-react-app</li>
-        <li onclick="push('/pureHTMLWithEntry')">包含entryjs的纯html页面</li>
-        <li onclick="push('/pureHTMLWithOutEntry')">不包含entryjs的纯html页面</li>
-
+      <ul id="links" class="mainapp-sidemenu">
       </ul>
       <!-- 子应用  -->
       <main id="subapp-container"></main>
@@ -28,7 +24,20 @@
 
   <script src="./index.js"></script>
   <script>
+    function createLink() {
+      const conf = window.subConfig;
+      links = document.getElementById('links')
+      for(let i=0; i<conf.length; i++){
+        const link = document.createElement('li');
+        link.onclick =function(){
+          push(conf[i].activeRule)
+        }; 
+        link.innerHTML = conf[i].linkName;
+        links.appendChild(link);
+      }
+    }
     function push(subapp) { history.pushState(null, subapp, subapp) }
+    createLink()
   </script>
 </body>
 

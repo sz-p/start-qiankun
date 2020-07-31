@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>QianKun Example</title>
+  <script src="/subConfig.863915b5.js"></script>
+<link rel="stylesheet" href="/main.e31bb0bc.css"></head>
+
+<body>
+  <div class="mainapp">
+    <!-- 标题栏 -->
+    <header class="mainapp-header">
+      <h1>QianKun</h1>
+    </header>
+    <div class="mainapp-main">
+      <!-- 侧边栏 -->
+      <ul id="links" class="mainapp-sidemenu">
+      </ul>
+      <!-- 子应用  -->
+      <main id="subapp-container"></main>
+    </div>
+  </div>
+
+  <script src="/main.e31bb0bc.js"></script>
+  <script>function createLink() {
+  var conf = window.subConfig;
+  links = document.getElementById('links');
+
+  var _loop = function _loop(i) {
+    var link = document.createElement('li');
+
+    link.onclick = function () {
+      push(conf[i].activeRule);
+    };
+
+    link.innerHTML = conf[i].linkName;
+    links.appendChild(link);
+  };
+
+  for (var i = 0; i < conf.length; i++) {
+    _loop(i);
+  }
+}
+
+function push(subapp) {
+  history.pushState(null, subapp, subapp);
+}
+
+createLink();</script>
+</body>
+
+</html>

@@ -18,59 +18,41 @@ render({ loading: false });
 
 const loader = (loading) => render({ loading });
 
+const createMicroApps = function() {
+	const conf = window.subConfig;
+	let microApps = [];
+	for (let i = 0; i < conf.length; i++) {
+		microApps.push({
+			name: conf[i].name,
+			entry: conf[i].entry,
+			activeRule: conf[i].activeRule,
+			loader,
+			container: '#subapp-viewport'
+		});
+	}
+	return microApps
+};
 /**
  * Step2 注册子应用
  */
 
-registerMicroApps(
-	[
-		{
-			name: 'thirdPage',
-			entry: 'https://sz-p.com/boardItem/canvas-img-roll/build/index.html',
-			container: '#subapp-viewport',
-			loader,
-			activeRule: '/thirdPage'
-		},
-		{
-			name: 'cra',
-			entry: './create-react-app/index.html',
-			container: '#subapp-viewport',
-			loader,
-			activeRule: '/cra'
-		},
-		{
-			name: 'pureHTMLWithEntry',
-			entry: '//localhost:3001',
-			container: '#subapp-viewport',
-			loader,
-			activeRule: '/pureHTMLWithEntry'
-		},
-		{
-			name: 'pureHTMLWithOutEntry',
-			entry: '//localhost:3002',
-			container: '#subapp-viewport',
-			loader,
-			activeRule: '/pureHTMLWithOutEntry'
+registerMicroApps(createMicroApps(), {
+	beforeLoad: [
+		(app) => {
+			console.log('[LifeCycle] before load %c%s', 'color: green;', app.name);
 		}
 	],
-	{
-		beforeLoad: [
-			(app) => {
-				console.log('[LifeCycle] before load %c%s', 'color: green;', app.name);
-			}
-		],
-		beforeMount: [
-			(app) => {
-				console.log('[LifeCycle] before mount %c%s', 'color: green;', app.name);
-			}
-		],
-		afterUnmount: [
-			(app) => {
-				console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name);
-			}
-		]
-	}
-);
+	beforeMount: [
+		(app) => {
+			console.log('[LifeCycle] before mount %c%s', 'color: green;', app.name);
+		}
+	],
+	afterUnmount: [
+		(app) => {
+			console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name);
+		}
+	]
+});
 
 const { onGlobalStateChange, setGlobalState } = initGlobalState({
 	user: 'qiankun'
